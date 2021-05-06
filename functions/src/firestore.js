@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const credentials = require("path/to/credentials.json");
+const credentials = require("../credentials.json");
 
 
 exports.connectFb=()=>{

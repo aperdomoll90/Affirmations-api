@@ -1,8 +1,8 @@
 {
   "hosting": {
     "public": "public",
-    "rewrite":[{
-     "source":"*",
+    "rewrites":[{
+     "source":"**",
      "function":"app"
     }],
     
