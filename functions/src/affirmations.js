@@ -1,25 +1,25 @@
 const admin = require('firebase-admin')
-const { connectFb } = require('./firestore')
+const { connectFirestore } = require('./firestore')
 
 exports.getAffirmations = (req, res) => {
-  const db = connectFb()
+  const db = connectFirestore()
   db.collection('affirmations')
     .get()
-    .then((collection) => {
-      const affirmationList = collection.docs.map((doc) => doc.data())
+    .then(collection => {
+      const affirmationList = collection.docs.map(doc => doc.data())
       res.send(affirmationList)
     })
-    .catch((err) =>
-      res.status(500).send('Error getting affirmations: ' + err.message)
+    .catch((err) => res.status(500).send('Error getting affirmations: ' + err.message)
     )
 }
+
 
 exports.postAffirmations = (req, res) => {
   if (!req.body || !req.body.text) {
     res.status(400).send('Invalid Request')
     // this verifies than the request has a body and a text on it before even connecting to the data base
   }
-  const db = connectFb()
+  const db = connectFirestore()
 
   const { uid, text, displayName, photoUrl } = req.body
   const now = admin.firestore.FieldValue.serverTimestamp()

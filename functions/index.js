@@ -11,4 +11,4 @@ app.post('/affirmations', postAffirmations)
 
 
 
-exports.app=functions.https.onRequest(app)
+exports.app = functions.https.onRequest(app)
