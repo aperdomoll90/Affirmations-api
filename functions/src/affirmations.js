@@ -36,7 +36,7 @@ exports.postAffirmations = (req, res) => {
   db.collection('affirmations')
     .add(newAffirmation)
     .then(() => {
-      this.postAffirmations(req, res) // pass response to get all affirmations
+      this.getAffirmations(req, res) // pass response to get all affirmations
     })
 
     .catch((err) => res.status(500).send('Error posting affirmations'))
