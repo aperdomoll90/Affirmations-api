@@ -10,3 +10,4 @@ exports.connectFb=()=>{
     return admin.firestore()
     }
 }
+// checking at admin and seeing if it has any apps connected and if it does not we initialize it
