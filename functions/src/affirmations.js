@@ -3,8 +3,7 @@ const { connectFirestore } = require('./firestore')
 
 exports.getAffirmations = (req, res) => {
   const db = connectFirestore()
-  db.collection('affirmations')
-    .get()
+  db.collection('affirmations').orderBy("created_at","desc").get()
     .then(collection => {
       const affirmationList = collection.docs.map(doc => doc.data())
       res.send(affirmationList)
